@@ -1,0 +1,5 @@
+- name: Sync host file playbook
+  hosts: 'all'
+  tasks:
+      - name: update host file
+        copy: src=hosts-file dest=/etc/hosts

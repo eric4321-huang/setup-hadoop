@@ -1,0 +1,11 @@
+- name: mount data disk playbook 
+  hosts: '{{ target }}'
+  tasks:
+      - name: transfer mount data script
+        copy: src=files/mount-data.sh dest=/root/.mount-data.sh mode=755
+
+      - name: run mount data script on {{ target }}
+        shell: sh /root/.mount-data.sh
+
+      - name: remove mount data script from {{ target }}
+        command: rm /root/.mount-data.sh

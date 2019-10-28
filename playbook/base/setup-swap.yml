@@ -1,0 +1,11 @@
+- name: setup swap playbook 
+  hosts: '{{ target }}'
+  tasks:
+      - name: transfer swap script
+        copy: src=files/swap.sh dest=/root/.swap.sh mode=755
+
+      - name: run swap script on {{ target }}
+        shell: sh /root/.swap.sh
+
+      - name: remove swap script from {{ target }}
+        command: rm /root/.swap.sh

@@ -1,0 +1,11 @@
+- name: init the new host
+  hosts: '{{ target }}'
+  tasks:
+      - name: transfer init host script
+        copy: src=files/init-host.sh dest=/root/.init-host.sh mode=755
+
+      - name: run init host script on {{ target }}
+        shell: sh /root/.init-host.sh {{ target }}
+
+      - name: remove init host script on {{ target }}
+        command: rm /root/.init-host.sh
